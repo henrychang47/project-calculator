@@ -62,10 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
       let target = e.target.textContent;
       //click number button 0~9
       if (!Number.isNaN(parseInt(target))) {
-
         number = inputNumber(number, target);
         displayNumber(number)
 
+        if (!operand) {
+          lastOperator = 0;
+        }
       }
 
       //clear button
@@ -98,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
       //equal button
       if (target === '=') {
         lastOperator = operateAndDisplay(operand, lastOperator, number);
-        //lastOperator = 0;
         number = 0;
         operand = '';
 
